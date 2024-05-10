@@ -1,0 +1,67 @@
+<div class="background">
+  <mat-card class="card">
+    <mat-card-title class="title">Regisztráció</mat-card-title>
+    <mat-card-content>
+      <form class="center" [formGroup]="registForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="inputs" appearance="outline">
+          <input
+            formControlName="username"
+            matInput
+            placeholder="Felhasználónév"
+            required="username"
+          />
+        </mat-form-field>
+        <mat-form-field class="inputs" appearance="outline">
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Email"
+            required="email"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="inputs" appearance="outline">
+          <input
+            formControlName="password"
+            matInput
+            placeholder="Jelszó"
+            [type]="'password'"
+            required="password"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="inputs" appearance="outline">
+          <input
+            formControlName="rePassword"
+            matInput
+            placeholder="Jelszó megerősítése"
+            [type]="'password'"
+            required="rePassword"
+          />
+        </mat-form-field>
+        <br />
+        <div class="buttons">
+          <button
+            mat-raised-button
+            style="color: white"
+            color="primary"
+            type="button"
+            (click)="onSubmit()"
+          >
+            Regisztráció
+          </button>
+
+          <button
+            style="padding: 0%"
+            (click)="cancel()"
+            mat-raised-button
+            style="color: white"
+            color="accent"
+          >
+            Mégse
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,43 @@
+.mat-toolbar {
+  background-color: #202a43;
+  color: white;
+}
+
+a {
+  padding-left: 2%;
+  font-weight: lighter;
+  color: white;
+  text-decoration: none;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.buttons {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .menu-icon {
+    display: block;
+  }
+  a {
+    display: none;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10%;
+    padding-left: 5%;
+  }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+}

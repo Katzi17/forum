@@ -1,0 +1,56 @@
+<div class="background">
+  <div>
+    <img class="icon" src="assets/szte_logo.png" height="150px" />
+    <p class="text" style="max-width: 650px">
+      Üdvözöllek! Ez a Szegedi Tudományegyetem (SZTE) nem hivatalos fóruma. Ez a
+      fórum közösségi alapú platform, ahol a Szegedi Tudományegyetem hallgatói,
+      oktatói és más érdeklődők kérdéseket tehetnek fel és válaszolhatnak az
+      egyetemmel kapcsolatos témákban. Itt megoszthatod tapasztalataidat és
+      segíthetsz másoknak az információk megosztásával és tanácsadással. Kérlek,
+      ügyelj arra, hogy ez egy nem hivatalos fórum, és a itt megosztott
+      információk nem mindig lehetnek hivatalosak vagy hitelesek. Regisztrálj és
+      csatlakozz a közösséghez! Reméljük, hogy hasznos beszélgetéseket
+      folytathatunk itt az SZTE-ről és egyetemi élettel kapcsolatban!
+    </p>
+  </div>
+  <div class="card-container">
+    <mat-card class="card">
+      <mat-card-title class="title">Bejelentkezés</mat-card-title>
+      <mat-card-content>
+        <div>
+          <mat-form-field appearance="outline">
+            <input [formControl]="email" matInput placeholder="Email" />
+          </mat-form-field>
+          <br />
+          <mat-form-field appearance="outline">
+            <input
+              [formControl]="password"
+              matInput
+              placeholder="Jelszó"
+              [type]="'password'"
+            />
+          </mat-form-field>
+          <div class="buttons">
+            <button
+              (click)="login()"
+              mat-raised-button
+              style="color: white"
+              color="primary"
+            >
+              Bejelentkezés
+            </button>
+
+            <button
+              [routerLink]="'/regist'"
+              mat-raised-button
+              style="color: white"
+              color="accent"
+            >
+              Regisztráció
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+<app-header></app-header>
+
+<div class="text">
+  <p>
+    Itt felteheted kérdésed, esetleg a már meglévő kérdések közül keresgélhetsz
+    és kommentben válaszolhatsz rá!
+  </p>
+</div>
+
+<div class="select-container">
+  <select id="chosenQuestion" (change)="displaySelectedQuestion()">
+    <option value="" disabled selected>Válassz egy kérdést...</option>
+    <option
+      *ngFor="let question of questions | async"
+      [(ngModel)]="question.question"
+    >
+      {{ question.question }}
+    </option>
+  </select>
+</div>
+
+<div class="question-container" *ngIf="questionObject">
+  <div class="name">{{ questionObject.username }}</div>
+  <div>
+    <p class="question">
+      {{ questionObject.question }}
+    </p>
+    <p class="border" *ngIf="questionObject.date">
+      {{ questionObject.date | dateFormat }}
+    </p>
+    <p>
+      <button
+        mat-icon-button
+        color="primary"
+        *ngIf="isCurrentUserQuestionOwner()"
+        type="button"
+        (click)="saveQuestionChanges()"
+      >
+        <mat-icon> save </mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        color="primary"
+        *ngIf="isCurrentUserQuestionOwner()"
+        (click)="editQuestion()"
+      >
+        <mat-icon> settings </mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        color="primary"
+        *ngIf="isCurrentUserQuestionOwner()"
+        (click)="deleteQuestion()"
+      >
+        <mat-icon> delete</mat-icon>
+      </button>
+    </p>
+  </div>
+</div>
+
+<div
+  class="tablesize"
+  *ngIf="questionObject.comments && questionObject.comments.length > 0"
+>
+  <table mat-table [dataSource]="questionObject.comments">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Dátum</th>
+      <td mat-cell *matCellDef="let comment">
+        {{ comment.date | dateFormat }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Felhasználónév</th>
+      <td
+        mat-cell
+        *matCellDef="let comment"
+        style="overflow-wrap: break-word; word-break: break-word"
+      >
+        {{ comment.username }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef>Komment</th>
+      <td
+        mat-cell
+        *matCellDef="let comment"
+        style="overflow-wrap: break-word; word-break: break-word"
+      >
+        {{ comment.comment }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef>Gombok</th>
+      <td mat-cell *matCellDef="let comment">
+        <button
+          mat-icon-button
+          color="primary"
+          *ngIf="isCurrentUserCommentOwner(comment)"
+          (click)="editComment(comment)"
+          type="button"
+        >
+          <mat-icon> settings </mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          *ngIf="isCurrentUserCommentOwner(comment)"
+          type="button"
+          (click)="saveChanges()"
+        >
+          <mat-icon> save </mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          *ngIf="isCurrentUserCommentOwner(comment)"
+          (click)="deleteComment(comment)"
+        >
+          <mat-icon> delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="['date', 'username', 'comment', 'buttons']"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['date', 'username', 'comment', 'buttons']"
+    ></tr>
+  </table>
+</div>
+
+<div class="card-container">
+  <mat-card class="cards"
+    ><mat-form-field appearance="outline" class="inputs">
+      <form [formGroup]="questionForm" (ngSubmit)="addQuestion()">
+        <textarea matInput formControlName="question" rows="3"></textarea>
+      </form>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="addQuestion()"
+    >
+      Kérdés létrehozása
+    </button></mat-card
+  >
+  <mat-card class="cards"
+    ><mat-form-field appearance="outline" class="inputs">
+      <form [formGroup]="commentsForm" (ngSubmit)="addComment()">
+        <textarea matInput formControlName="comment" rows="3"></textarea>
+      </form>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="addComment()"
+    >
+      Komment hozzáadása
+    </button></mat-card
+  >
+</div>

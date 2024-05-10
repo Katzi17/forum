@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <img class="icon" src="assets/szte_logo.png" height="50px" />
+  <div class="buttons">
+    <button routerLink="/home" mat-icon-button class="menu-icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button routerLink="/questions" mat-icon-button class="menu-icon">
+      <mat-icon>quiz</mat-icon>
+    </button>
+    <button routerLink="/forum" mat-icon-button class="menu-icon">
+      <mat-icon>forum</mat-icon>
+    </button>
+    <button routerLink="/about-szte" mat-icon-button class="menu-icon">
+      <mat-icon>history_edu</mat-icon>
+    </button>
+    <ng-container *ngIf="currentUser?.isAdmin">
+      <button routerLink="/users" mat-icon-button class="menu-icon">
+        <mat-icon>group</mat-icon>
+      </button>
+    </ng-container>
+  </div>
+  <a href="/home">Kezdőlap</a>
+  <a href="/questions">Gyakori kérdések</a>
+  <a href="/forum">Fórum</a>
+  <a href="/about-szte">SZTE</a>
+  <ng-container *ngIf="currentUser?.isAdmin">
+    <a href="/users">Felhasználók</a>
+  </ng-container>
+  <span class="example-spacer"></span>
+  <div class="button">
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

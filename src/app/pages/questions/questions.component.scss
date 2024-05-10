@@ -1,0 +1,102 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cards {
+  padding: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  box-shadow: 0 0 2px 0 rgba(98, 98, 98, 0.91);
+}
+
+.tablesize {
+  padding: 2%;
+}
+
+.select-container {
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  width: 90%;
+  padding: 1rem 4rem 1rem 1rem;
+  color: rgb(129, 132, 132);
+  border-radius: 0.25em;
+  box-shadow: 0 0 2px 0 rgba(98, 98, 98, 0.91);
+  cursor: pointer;
+  &::-ms-expand {
+    display: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  option {
+    color: inherit;
+    background-color: var(--option-bg);
+  }
+}
+
+.text {
+  text-align: center;
+  padding-top: 2%;
+  color: rgb(102, 103, 103);
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+p {
+  margin: 0 0 13px 0;
+}
+
+.question-container {
+  padding: 5%;
+  padding-bottom: 1%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.question {
+  color: rgb(102, 103, 103);
+  font-size: 22px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: normal;
+  padding: 10px 0;
+  top: 0;
+  text-align: center;
+  color: rgb(129, 132, 132);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.border {
+  color: rgb(129, 132, 132);
+  border-bottom: 2px solid rgba(129, 132, 132, 0.686);
+  padding: 15px 0;
+}
+
+.inputs {
+  width: 300px;
+}
+
+@media screen and (max-width: 800px) {
+  .card-container {
+    display: block;
+    width: 350px;
+    margin-left: 15%;
+    padding-bottom: 2%;
+  }
+}

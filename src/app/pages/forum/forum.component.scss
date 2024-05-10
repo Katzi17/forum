@@ -1,0 +1,32 @@
+.tablesize {
+  padding: 2%;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.inputs {
+  width: 500px;
+}
+
+@media screen and (max-width: 800px) {
+  .card-container {
+    display: block;
+    width: 350px;
+    margin-left: 15%;
+    padding-bottom: 2%;
+  }
+
+  .inputs {
+    width: 280px;
+  }
+}

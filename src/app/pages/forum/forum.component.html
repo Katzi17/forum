@@ -1,0 +1,93 @@
+<app-header></app-header>
+
+<div class="tablesize">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Dátum</th>
+      <td mat-cell *matCellDef="let comment">
+        {{ comment.date | dateFormat }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Felhasználónév</th>
+      <td
+        style="overflow-wrap: break-word; word-break: break-word"
+        mat-cell
+        *matCellDef="let comment"
+      >
+        {{ comment.username }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef>Komment</th>
+      <td
+        style="overflow-wrap: break-word; word-break: break-word"
+        mat-cell
+        *matCellDef="let comment"
+      >
+        {{ comment.comment }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let comment">
+        <button
+          mat-icon-button
+          color="primary"
+          *ngIf="isCurrentUserCommentOwner(comment)"
+          (click)="editForumComment(comment)"
+          type="button"
+        >
+          <mat-icon> settings </mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          *ngIf="isCurrentUserCommentOwner(comment)"
+          type="button"
+          (click)="saveChanges()"
+        >
+          <mat-icon> save </mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          *ngIf="isCurrentUserCommentOwner(comment)"
+          (click)="deleteForumComment(comment)"
+        >
+          <mat-icon> delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="['date', 'username', 'comment', 'actions']"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['date', 'username', 'comment', 'actions']"
+    ></tr>
+  </table>
+</div>
+
+<div class="card-container">
+  <mat-card class="card"
+    ><mat-form-field appearance="outline" class="inputs">
+      <form [formGroup]="commentsForm" (ngSubmit)="addForumComment()">
+        <textarea matInput formControlName="comment" rows="5"></textarea>
+      </form>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="addForumComment()"
+    >
+      Komment hozzáadása
+    </button></mat-card
+  >
+</div>

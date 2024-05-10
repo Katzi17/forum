@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "forum-9dd5c": {
+      "hosting": {
+        "forum-app": [
+          "forum-9dd5c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "forum-9dd5c"
+  }
+}

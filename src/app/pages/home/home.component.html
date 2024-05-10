@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+<mat-card class="container" *ngIf="currentUser">
+  <mat-card-content>
+    <h1 class="hello">Üdvözöllek {{ currentUser.username }}!</h1>
+    <h3>A weboldalról</h3>
+    <p>
+      Gyakori Kérdések fülön lehetőséged van feltenni kérdéseidet vagy
+      segítséget kérni másoktól. Emellett egy kiváló hely arra, hogy megosszd
+      tapasztalataidat és segíts másoknak. Amennyiben bármilyen kérdésed van egy
+      adott témával kapcsolatban, ne habozz feltenni azt a Gyakori Kérdések fül
+      alatt.A fórum fülben egy szabad beszélgetés helyszíne. Itt lehetősége van
+      a felhasználóknak ismerkedésben a közösségben, eszmecserékre és vélemények
+      megosztására. Mindazonáltal fontos, hogy mindenki tiszteletteljesen
+      viselkedjen egymással szemben.
+    </p>
+    <h3>Tudnivalók</h3>
+    <ul>
+      <li>
+        <p>
+          <mat-icon class="icon"> settings </mat-icon>Ezzel a gombbal tudod
+          módosítani a kérdésed/kommented
+        </p>
+      </li>
+      <li>
+        <p>
+          <mat-icon class="icon"> save </mat-icon>Ezzel a gombbal tudod menteni
+          a módosítást
+        </p>
+      </li>
+      <li>
+        <p>
+          <mat-icon class="icon"> delete</mat-icon> Ezzel a gombbal törölheted a
+          kérdésed/kommented
+        </p>
+      </li>
+    </ul>
+    <h3>FONTOS!</h3>
+    <p>
+      Bármilyen sértő vagy nem megfelelő megjegyzés vagy viselkedés esetén
+      fenntartjuk magunknak a jogot a kommentek törlésére vagy a fiókok
+      tiltására. Ez a közösség mindannyiunké, és minden tagunknak a felelőssége
+      a pozitív légkör megőrzése és a tiszteletteljes viselkedés betartása.
+    </p>
+    <h4 class="thanks">
+      Köszönjük, hogy része vagy ennek a közösségnek, és várjuk kérdéseidet,
+      hozzászólásaidat és észrevételeidet!
+    </h4>
+  </mat-card-content>
+</mat-card>
+<div class="margin"></div>
